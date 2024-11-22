@@ -2,10 +2,14 @@
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
 <loc>/</loc>
-<lastmod>2023-12-05T17:03:21+01:00</lastmod>
+<lastmod>2024-11-22T14:27:59+01:00</lastmod>
 </url>
 <url>
 <loc>/resources/pipeline_overview_.pdf</loc>
-<lastmod>2023-11-30T15:55:10+01:00</lastmod>
+<lastmod>2024-11-22T11:20:14+01:00</lastmod>
+</url>
+<url>
+<loc>/resources/pipeline_w_mosaic.pdf</loc>
+<lastmod>2024-11-22T11:57:32+01:00</lastmod>
 </url>
 </urlset>
