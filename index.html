@@ -179,7 +179,6 @@
   </div>
 </section>
 
-
 <section class="section">
   <div class="container is-max-desktop">
     <!-- Abstract. -->
@@ -328,7 +327,7 @@
           </div>
         </div>
         
-        <h3 class="title is-5">Reconstruction (from Umbrella sequence)</h3>
+        <!-- <h3 class="title is-5">Reconstruction (from Umbrella sequence)</h3>
         <div class="columns is-centered">
           <div class="column is-10">
             <div class="has-text-centered">
@@ -342,7 +341,7 @@
               ></iframe>
             </div>
           </div>
-        </div>
+        </div> -->
 
         <h3 class="title is-4">Wild-SLAM iPhone</h3>
 
@@ -385,93 +384,40 @@
         </div>
         
         <div style="height: 50px;"></div> 
-        <h3 class="title is-4">Bonn RGB-D Dynamic Dataset</h3>
-        <!-- <div class="content has-text-justified">
-          <p>
-            Replacing the 2D dilation of 3DGS with an EWA (elliptical weighted average) filter, denoted as 3DGS + EWA, reduces the dilation and erosion artifacts.
-            However, it produces high-frequency artifacts when zooming in, while our method is free of such artifacts, as shown in the following comparisons.
-          </p>
-        </div> -->
-        
-        <div class="container">
-          <div class="b-dics" style="width: 1000px; font-weight: 600;">
-              <img src="resources/recon/7scenes/7scenes_office_nice_normal.jpg" alt="NICE-SLAM">
-              <img src="resources/recon/7scenes/7scenes_office_nerfslam_normal.jpg" alt="NeRF-SLAM">
-              <img src="resources/recon/7scenes/7scenes_office_dim_normal.jpg" alt="DIM-SLAM">
-              <img src="resources/recon/7scenes/7scenes_office_droid_normal.jpg" alt="DROID-SLAM">
-              <img src="resources/recon/7scenes/7scenes_office_ours_normal.jpg" alt="NICER-SLAM (Ours)">
-              <img src="resources/recon/7scenes/7scenes_office_gt_normal.jpg" alt="GT">
-          </div>
-        </div>
-        
-        
-       
+        <h3 class="title is-4">Bonn RGB-D Dynamic Dataset (crowd)</h3>
 
-        <!-- <div class="content has-text-centered">
-          <video class="video" width="100%" id="xyalias9" loop playsinline autoplay muted src="resources/bonsai_3dgs_ewa_vs_ours.mp4" onplay="resizeAndPlay(this)" style="height: 0px;"></video>
-          <canvas height=0 class="videoMerge" id="xyalias9Merge"></canvas>
-        </div> -->
-
-        <!-- <div class="content has-text-justified">
-          <p>
-            Here, we show more comparisons with 3DGS + EWA. Both models are trained with downsampled images with factor 8 and render at higher-resolution. 
-            GT (Training resolution) is the image we used for training but bilinearly upsampled to higher-resolution for reference and GT (8x resolution) is the real GT image we used for evaluation.
-          </p>
-        </div> -->
-
+        <p style="margin-top: -60px">
+          <div class="container is-max-desktop">
+            <div class="hero-body">
+              <div class="columns is-centered has-text-centered">
+                <div class="column is-full-width">
+                  <video class="video" width="50%" id="xyalias7" loop playsinline autoplay muted src="resources/results/bonn_crowd.mp4" onplay="resizeAndPlay(this)" style="height: 0px;"></video>
+                  <canvas height=0 class="videoMerge" id="xyalias7Merge"></canvas>
+                </div> 
+              </div> 
+            </div> 
+          </div> 
+        </p>
         
-
         <!-- <br> -->
-        <div style="height: 50px;"></div> 
-        <h3 class="title is-4">TUM RGB-D Dataset</h3>
-
-        <!-- <h3 class="title is-5">Rendering</h3> -->
-        <!-- <div class="container"> -->
-          <!-- <ul class="nav nav-tabs nav-fill nav-justified" id="self-rendering">
-            <li class="nav-item">
-              <a class="nav-link" onclick="sevenScenesReconEvent(0)">room0</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link active" onclick="sevenScenesReconEvent(1)">room1</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" onclick="sevenScenesReconEvent(2)">room2</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" onclick="sevenScenesReconEvent(3)">room3</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" onclick="sevenScenesReconEvent(4)">room4</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" onclick="sevenScenesReconEvent(5)">office0</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" onclick="sevenScenesReconEvent(6)">office1</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" onclick="sevenScenesReconEvent(7)">office2</a>
-            </li>
-        </ul> -->
-        
-          <div class="b-dics" style="width: 1000px; font-weight: 600;">
-              <img src="resources/rendering/self/azure_15_colmap.jpg" alt="COLMAP">
-              <img src="resources/rendering/self/azure_15_tandem.jpg" alt="TANDEM">
-              <img src="resources/rendering/self/azure_15_nerfslam.jpg" alt="NeRF-SLAM">
-              <img src="resources/rendering/self/azure_15_droid.jpg" alt="DROID-SLAM">
-              <img src="resources/rendering/self/azure_15_ours.jpg" alt="NICER-SLAM (Ours)">
-          </div>
-        <!-- </div> -->
-        <!-- <div style="height: 50px;"></div>
-        <h3 class="title is-5">Reconstruction</h3>
-
-        <div class="b-dics" style="width: 1000px; font-weight: 600;">
-          <img src="resources/recon/self/azure_11_colmap_normal.jpg" alt="COLMAP">
-          <img src="resources/recon/self/azure_11_tandem_normal.jpg" alt="TANDEM">
-          <img src="resources/recon/self/azure_11_nerfslam_normal.jpg" alt="NeRF-SLAM">
-          <img src="resources/recon/self/azure_11_droid_normal.jpg" alt="DROID-SLAM">
-          <img src="resources/recon/self/azure_11_ours_normal.jpg" alt="NICER-SLAM (Ours)">
-      </div> -->
+    
+        <p style="margin-top: -60px">
+          <div style="height: 50px;"></div> 
+          <h3 class="title is-4">TUM RGB-D Dataset (rgbd_dataset_freiburg3_walking_rpy)</h3>
+        </p>
+    
+        <p style="margin-top: -60px">
+          <div class="container is-max-desktop">
+            <div class="hero-body">
+              <div class="columns is-centered has-text-centered">
+                <div class="column is-full-width">
+                  <video class="video" width="50%" id="xyalias8" loop playsinline autoplay muted src="resources/results/tum_walking_half.mp4" onplay="resizeAndPlay(this)" style="height: 0px;"></video>
+                  <canvas height=0 class="videoMerge" id="xyalias8Merge"></canvas>
+                </div> 
+              </div> 
+            </div> 
+          </div> 
+        </p>
 
       </div>
     </div>
@@ -481,6 +427,7 @@
 
 
 
+<p style="margin-top: -60px">
 <section class="section" id="BibTeX">
   <div class="container is-max-desktop content">
     <h2 class="title">BibTeX</h2>
@@ -492,6 +439,7 @@
 }</code></pre>
   </div>
 </section>
+</p>
 
 <section class="section" id="Acknowledgements">
   <div class="container is-max-desktop content">
