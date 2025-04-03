@@ -115,3 +115,52 @@ function resizeAndPlay(element)
     
   playVids(element.id);
 }
+
+function videoPlay(element) {
+    var videoMerge = document.getElementById(element.id + "Merge");
+    var container = videoMerge.parentElement;
+    
+    // Calculate the available width (respecting the container width)
+    var availableWidth = container.clientWidth;
+    
+    // Calculate height based on aspect ratio
+    var aspectRatio = element.videoHeight / element.videoWidth;
+    var calculatedHeight = availableWidth * aspectRatio;
+    
+    // Set canvas dimensions to be responsive
+    videoMerge.width = availableWidth;
+    videoMerge.height = calculatedHeight;
+    
+    // Hide the video element while still playing it
+    element.style.height = "0px";
+    
+    // Start playback
+    element.play();
+    
+    var mergeContext = videoMerge.getContext("2d");
+    
+    function drawLoop() {
+        // Draw the complete video frame to the canvas
+        mergeContext.drawImage(element, 0, 0, element.videoWidth, element.videoHeight, 
+                             0, 0, videoMerge.width, videoMerge.height);
+        
+        requestAnimationFrame(drawLoop);
+    }
+    
+    // Handle window resize events
+    function handleResize() {
+        // Recalculate dimensions
+        availableWidth = container.clientWidth;
+        calculatedHeight = availableWidth * aspectRatio;
+        
+        // Update canvas size
+        videoMerge.width = availableWidth;
+        videoMerge.height = calculatedHeight;
+    }
+    
+    // Add resize event listener
+    window.addEventListener('resize', handleResize);
+    
+    // Start the animation loop
+    requestAnimationFrame(drawLoop);
+}
