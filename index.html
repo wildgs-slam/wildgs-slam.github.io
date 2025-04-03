@@ -55,6 +55,69 @@
   <link rel="stylesheet" href="./static/css/dics.original.css">
   <script src="./static/js/event_handler.js"></script>
   <script src="./static/js/dics.original.js"></script>
+
+  <script>
+    function switchWildSlamSeq(index) {
+      // Hide all tab panes
+      const tabPanes = document.querySelectorAll('.tab-pane');
+      tabPanes.forEach(pane => {
+        pane.style.display = 'none';
+        pane.classList.remove('active');
+      });
+      
+      // Remove active class from all nav items
+      const navItems = document.querySelectorAll('.nav-item');
+      navItems.forEach(item => {
+        item.classList.remove('active');
+      });
+      
+      // Show the selected tab pane and set the tab as active
+      if (index === 0) {
+        document.getElementById('Any1').style.display = 'block';
+        document.getElementById('Any1').classList.add('active');
+      } else if (index === 1) {
+        document.getElementById('Any2').style.display = 'block';
+        document.getElementById('Any2').classList.add('active');
+      } else if (index === 2) {
+        document.getElementById('Ball').style.display = 'block';
+        document.getElementById('Ball').classList.add('active');
+      } else if (index === 3) {
+        document.getElementById('Crowd').style.display = 'block';
+        document.getElementById('Crowd').classList.add('active');
+      } else if (index === 4) {
+        document.getElementById('Person').style.display = 'block';
+        document.getElementById('Person').classList.add('active');
+      } else if (index === 5) {
+        document.getElementById('Racket').style.display = 'block';
+        document.getElementById('Racket').classList.add('active');
+      } else if (index === 6) {
+        document.getElementById('Stones').style.display = 'block';
+        document.getElementById('Stones').classList.add('active');
+      } else if (index === 7) {
+        document.getElementById('Table1').style.display = 'block';
+        document.getElementById('Table1').classList.add('active');
+      } else if (index === 8) {
+        document.getElementById('Table2').style.display = 'block';
+        document.getElementById('Table2').classList.add('active');
+      } else if (index === 9) {
+        document.getElementById('Umbrella').style.display = 'block';
+        document.getElementById('Umbrella').classList.add('active');
+      }
+      
+      // Set the clicked nav item as active
+      document.querySelectorAll('.nav-item')[index].classList.add('active');
+      
+      // Trigger resize for videos that might be visible now
+      const videos = document.querySelectorAll('.video');
+      videos.forEach(video => {
+        if (video.offsetParent !== null) {  // Check if video is visible
+          if (typeof resizeAndPlay === 'function') {
+            resizeAndPlay(video);
+          }
+        }
+      });
+    }
+  </script>
   
 
 
@@ -326,62 +389,160 @@
             </div>
           </div>
         </div>
-        
-        <!-- <h3 class="title is-5">Reconstruction (from Umbrella sequence)</h3>
-        <div class="columns is-centered">
-          <div class="column is-10">
-            <div class="has-text-centered">
-              <iframe 
-                id="viewer" 
-                width="800" 
-                height="500" 
-                allow="fullscreen; xr-spatial-tracking" 
-                src="https://superspl.at/s?id=7e44cda0&autoplay=false" 
-                style="max-width: 100%; border: none;"
-              ></iframe>
-            </div>
-          </div>
-        </div> -->
 
+        <h3 class="title is-5">Rendering</h3>
+        
+        <div class="container is-max-desktop">
+          <!-- Navigation tabs with Bootstrap-style -->
+          <ul class="nav nav-tabs nav-fill nav-justified" id="dataset-tabs">
+            <li class="nav-item active">
+              <a class="nav-link" onclick="switchWildSlamSeq(0)">ANYmal1</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" onclick="switchWildSlamSeq(1)">ANYmal2</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" onclick="switchWildSlamSeq(2)">Ball</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" onclick="switchWildSlamSeq(3)">Crowd</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" onclick="switchWildSlamSeq(4)">Person</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" onclick="switchWildSlamSeq(5)">Racket</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" onclick="switchWildSlamSeq(6)">Stones</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" onclick="switchWildSlamSeq(7)">Table1</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" onclick="switchWildSlamSeq(8)">Table2</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" onclick="switchWildSlamSeq(9)">Umbrella</a>
+            </li>
+          </ul>
+
+          <!-- Content container -->
+          <div class="tab-content">
+            <div class="tab-pane active" id="Any1">
+              <div class="columns is-centered has-text-centered">
+                <div class="column is-full-width">
+                  <video class="video" width="50%" id="Any1Video" loop playsinline autoplay muted src="resources/results/render_anymal1.mp4" onplay="resizeAndPlay(this)" style="height: 0px;"></video>
+                  <canvas height=0 class="videoMerge" id="Any1VideoMerge"></canvas>
+                </div> 
+              </div>
+            </div>
+            
+            <div class="tab-pane" id="Any2" style="display: none;">
+              <div class="columns is-centered has-text-centered">
+                <div class="column is-full-width">
+                  <video class="video" width="50%" id="Any2Video" loop playsinline autoplay muted src="resources/results/render_anymal2.mp4" onplay="resizeAndPlay(this)" style="height: 0px;"></video>
+                  <canvas height=0 class="videoMerge" id="Any2VideoMerge"></canvas>
+                </div>
+              </div>
+            </div>
+            
+            <div class="tab-pane" id="Ball" style="display: none;">
+              <div class="columns is-centered has-text-centered">
+                <div class="column is-full-width">
+                  <video class="video" width="50%" id="BallVideo" loop playsinline autoplay muted src="resources/results/render_ball.mp4" onplay="resizeAndPlay(this)" style="height: 0px;"></video>
+                  <canvas height=0 class="videoMerge" id="BallVideoMerge"></canvas>
+                </div>
+              </div>
+            </div>
+            
+            <div class="tab-pane" id="Crowd" style="display: none;">
+              <div class="columns is-centered has-text-centered">
+                <div class="column is-full-width">
+                  <video class="video" width="50%" id="CrowdVideo" loop playsinline autoplay muted src="resources/results/render_crowd.mp4" onplay="resizeAndPlay(this)" style="height: 0px;"></video>
+                  <canvas height=0 class="videoMerge" id="CrowdVideoMerge"></canvas>
+                </div>
+              </div>
+            </div>
+            
+            <div class="tab-pane" id="Person" style="display: none;">
+              <div class="columns is-centered has-text-centered">
+                <div class="column is-full-width">
+                  <video class="video" width="50%" id="PersonVideo" loop playsinline autoplay muted src="resources/results/render_person_tracking.mp4" onplay="resizeAndPlay(this)" style="height: 0px;"></video>
+                  <canvas height=0 class="videoMerge" id="PersonVideoMerge"></canvas>
+                </div>
+              </div>
+            </div>
+            
+            <div class="tab-pane" id="Racket" style="display: none;">
+              <div class="columns is-centered has-text-centered">
+                <div class="column is-full-width">
+                  <video class="video" width="50%" id="RacketVideo" loop playsinline autoplay muted src="resources/results/render_racket.mp4" onplay="resizeAndPlay(this)" style="height: 0px;"></video>
+                  <canvas height=0 class="videoMerge" id="RacketVideoMerge"></canvas>
+                </div>
+              </div>
+            </div>
+            
+            <div class="tab-pane" id="Stones" style="display: none;">
+              <div class="columns is-centered has-text-centered">
+                <div class="column is-full-width">
+                  <video class="video" width="50%" id="StonesVideo" loop playsinline autoplay muted src="resources/results/render_stones.mp4" onplay="resizeAndPlay(this)" style="height: 0px;"></video>
+                  <canvas height=0 class="videoMerge" id="StonesVideoMerge"></canvas>
+                </div>
+              </div>
+            </div>
+            
+            <div class="tab-pane" id="Table1" style="display: none;">
+              <div class="columns is-centered has-text-centered">
+                <div class="column is-full-width">
+                  <video class="video" width="50%" id="Table1Video" loop playsinline autoplay muted src="resources/results/render_table_tracking1.mp4" onplay="resizeAndPlay(this)" style="height: 0px;"></video>
+                  <canvas height=0 class="videoMerge" id="Table1VideoMerge"></canvas>
+                </div>
+              </div>
+            </div>
+            
+            <div class="tab-pane" id="Table2" style="display: none;">
+              <div class="columns is-centered has-text-centered">
+                <div class="column is-full-width">
+                  <video class="video" width="50%" id="Table2Video" loop playsinline autoplay muted src="resources/results/render_table_tracking2.mp4" onplay="resizeAndPlay(this)" style="height: 0px;"></video>
+                  <canvas height=0 class="videoMerge" id="Table2VideoMerge"></canvas>
+                </div>
+              </div>
+            </div>
+            
+            <div class="tab-pane" id="Umbrella" style="display: none;">
+              <div class="columns is-centered has-text-centered">
+                <div class="column is-full-width">
+                  <video class="video" width="50%" id="UmbrellaVideo" loop playsinline autoplay muted src="resources/results/render_umbrella.mp4" onplay="resizeAndPlay(this)" style="height: 0px;"></video>
+                  <canvas height=0 class="videoMerge" id="UmbrellaVideoMerge"></canvas>
+                </div>
+              </div>
+            </div>
+
+        <p style="margin-top: 30px"></p>
         <h3 class="title is-4">Wild-SLAM iPhone</h3>
 
-        <!-- <div style="height: 30px;"></div> 
-        <h3 class="title is-5">Rendering</h3> -->
-        <div class="container">
-          <ul class="nav nav-tabs nav-fill nav-justified" id="replica-rendering">
-              <li class="nav-item active">
-                <a class="nav-link" onclick="replicaRenderingEvent(0)">room0</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" onclick="replicaRenderingEvent(1)">room1</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" onclick="replicaRenderingEvent(2)">room2</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" onclick="replicaRenderingEvent(3)">office0</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" onclick="replicaRenderingEvent(4)">office1</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" onclick="replicaRenderingEvent(5)">office2</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" onclick="replicaRenderingEvent(6)">office3</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" onclick="replicaRenderingEvent(7)">office4</a>
-              </li>
-          </ul>
-          <div class="b-dics" style="width: 1000px; font-weight: 600;">
-              <img src="resources/rendering/replica/room0_nice.jpg" alt="NICE-SLAM">
-              <img src="resources/rendering/replica/room0_dim.jpg" alt="DIM-SLAM">
-              <img src="resources/rendering/replica/room0_droid.jpg" alt="DROID-SLAM">
-              <img src="resources/rendering/replica/room0_ours.png" alt="NICER-SLAM (Ours)">
-              <img src="resources/rendering/replica/room0_gt.png" alt="GT">
+        <div class="columns is-centered">
+          <div class="column">
+            <div class="video-container has-text-centered">
+              <video id="video1" controls preload="auto" height="100%">
+                <source src="./resources/results/stones.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+              <!-- <p class="caption">First video caption</p> -->
+            </div>
+          </div>
+          <div class="column">
+            <div class="video-container has-text-centered">
+              <video id="video2" controls preload="auto" height="100%">
+                <source src="./resources/results/umbrella.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+              <!-- <p class="caption">Second video caption</p> -->
+            </div>
           </div>
         </div>
+        
         
         <div style="height: 50px;"></div> 
         <h3 class="title is-4">Bonn RGB-D Dynamic Dataset (crowd)</h3>
