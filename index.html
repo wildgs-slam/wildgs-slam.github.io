@@ -396,12 +396,6 @@
           <!-- Navigation tabs with Bootstrap-style -->
           <ul class="nav nav-tabs nav-fill nav-justified" id="dataset-tabs">
             <li class="nav-item active">
-              <a class="nav-link" onclick="switchWildSlamSeq(0)">ANYmal1</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" onclick="switchWildSlamSeq(1)">ANYmal2</a>
-            </li>
-            <li class="nav-item">
               <a class="nav-link" onclick="switchWildSlamSeq(2)">Ball</a>
             </li>
             <li class="nav-item">
@@ -425,11 +419,17 @@
             <li class="nav-item">
               <a class="nav-link" onclick="switchWildSlamSeq(9)">Umbrella</a>
             </li>
+            <li class="nav-item">
+              <a class="nav-link" onclick="switchWildSlamSeq(0)">ANYmal1</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" onclick="switchWildSlamSeq(1)">ANYmal2</a>
+            </li>
           </ul>
 
           <!-- Content container -->
           <div class="tab-content">
-            <div class="tab-pane active" id="Any1">
+            <div class="tab-pane" id="Any1" style="display: none;>
               <div class="columns is-centered has-text-centered">
                 <div class="column is-full-width">
                   <video class="video" width="50%" id="Any1Video" loop playsinline autoplay muted src="resources/results/render_anymal1.mp4" onplay="resizeAndPlay(this)" style="height: 0px;"></video>
@@ -447,7 +447,7 @@
               </div>
             </div>
             
-            <div class="tab-pane" id="Ball" style="display: none;">
+            <div class="tab-pane active" id="Ball"">
               <div class="columns is-centered has-text-centered">
                 <div class="column is-full-width">
                   <video class="video" width="50%" id="BallVideo" loop playsinline autoplay muted src="resources/results/render_ball.mp4" onplay="resizeAndPlay(this)" style="height: 0px;"></video>
